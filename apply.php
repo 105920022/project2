@@ -10,16 +10,7 @@
     <link rel="stylesheet" href="styles/apply.css">
 </head>
 <body> 
-    <header>
-        <!-- https://www.canva.com/ai-logo-generator/ prompt: generate a simple company logo for a music composing software called GROJBAND -->
-        <a href="index.html"><img id="Logo" src="images/GrojBand.png" alt="GrojBand Logo"></a>
-        <nav>
-            <a class="NavButton" href="index.html">Home</a>
-            <a class="NavButton" href="about.html">About</a>
-            <a class="NavButton" href="jobs.html">Jobs</a>
-            <a class="NavButton" href="apply.html">Apply</a>
-        </nav>
-    </header>
+    <?php include('header.inc') ?>
     <h1 id="jobApplicationTitle">Position Application</h1>
     <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
         <p>
@@ -119,13 +110,6 @@
             <button type="submit">Apply</button>
         </p>
     </form>
-
-    <footer>
-        <hr>
-        <p>&copy; GrojBand</p>
-        <a href="mailto:grojbandwebtech@gmail.com">Contact Us!</a>
-        <a href="https://grojbandwebtech.atlassian.net">Our Jira Page</a>
-        <a href="https://github.com/105920022/project1" target="_blank">Github Project page</a>
-    </footer>
+    <?php include('footer.inc') ?>
 </body>
 </html>

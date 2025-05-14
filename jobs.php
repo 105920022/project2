@@ -10,16 +10,7 @@
     <title>Jobs Available</title>
 </head>
 <body>
-    <header> <!-- Main logo and navigation buttons which appears at the top of the screen -->
-        <!-- https://www.canva.com/ai-logo-generator/ prompt: generate a simple company logo for a music composing software called GROJBAND -->
-        <a href="index.html"><img id="Logo" src="images/GrojBand.png" alt="GrojBand Logo"></a>
-        <nav>
-            <a class="NavButton" href="index.html">Home</a>
-            <a class="NavButton" href="about.html">About</a>
-            <a class="NavButton" href="jobs.html">Jobs</a>
-            <a class="NavButton" href="apply.html">Apply</a>
-        </nav>
-    </header>
+    <?php include('header.inc') ?>
     <!-- Section where all the information on the page is -->
     <section>
         <!-- Title of page section -->
@@ -90,12 +81,6 @@
         </div>
     </section>
     <!-- Bottom footer section, with company title, contact and jira buttons -->
-    <footer>
-        <hr>
-        <p>&copy; GrojBand</p>
-        <a href="mailto:grojbandwebtech@gmail.com">Contact Us!</a>
-        <a href="https://grojbandwebtech.atlassian.net">Our Jira Page</a>
-        <a href="https://github.com/105920022/project1" target="_blank">Github Project page</a>
-    </footer>
+    <?php include('footer.inc') ?>
 </body>
 </html>

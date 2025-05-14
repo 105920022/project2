@@ -14,16 +14,7 @@
     <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-    <header>
-        <!-- https://www.canva.com/ai-logo-generator/ prompt: generate a simple company logo for a music composing software called GROJBAND -->
-        <a href="index.html"><img id="Logo" src="images/GrojBand.png" alt="GrojBand Logo"></a>
-        <nav>
-            <a class="NavButton" href="index.html">Home</a>
-            <a class="NavButton" href="about.html">About</a>
-            <a class="NavButton" href="jobs.html">Jobs</a>
-            <a class="NavButton" href="apply.html">Apply</a>
-        </nav>
-    </header>
+    <?php include('header.inc') ?>
 
     <!-- Page specific content -->
     <h1>Creators of the best audio workstation program available!</h1>
@@ -33,21 +24,15 @@
 
     <!-- Short description for Grojband -->
     <p>The Grojband company is dedicated to developing our premium audio software by the same name, with passionate members making up our team! Our goal is to make music and audio engineering accessible to the public for a cheap price.</p>
-    <p>Find out more about our company and the people at it <a href="./about.html">here</a>!</p>
+    <p>Find out more about our company and the people at it <a href="./about.php">here</a>!</p>
     <br>
 
     <!-- Short description about working at Grojband -->
     <p>At Grojband, we ensure that our members are satisfied with their work, allowing us to make better software.</p>
-    <p>Want to work with us? We have available job listings you can find <a href="./jobs.html">here</a>!</p>
+    <p>Want to work with us? We have available job listings you can find <a href="./jobs.php">here</a>!</p>
 
 
     <!-- Footer for contact links, and Jira link -->
-    <footer>
-        <hr>
-        <p>&copy; GrojBand</p>
-        <a href="mailto:grojbandwebtech@gmail.com">Contact Us!</a>
-        <a href="https://grojbandwebtech.atlassian.net">Our Jira Page</a>
-        <a href="https://github.com/105920022/project1" target="_blank">Github Project page</a>
-    </footer>
+    <?php include('footer.inc') ?>
 </body>
 </html>
