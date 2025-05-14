@@ -1,0 +1,8 @@
+#MusicEditorImage {
+    width: 100%;
+}
+
+/* I use the aside tag here, as it already applies the styles in styles.css, while allowing me to edit a singular property here */
+aside {
+    width: 40%;
+}

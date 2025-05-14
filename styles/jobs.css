@@ -1,0 +1,25 @@
+/*
+    filename: jobs.css
+    author: Eli
+    created: 09/04/2025
+    description: CSS file only relevent to the jobs avaliable page
+*/
+
+aside img { /* Applies a circular border to the images */
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid rgb(51, 102, 0);
+    display: block;
+    margin: 0 auto 20px;
+}
+
+
+.jobContainer { /* Allows the jobs to allign with eachother horizontally */
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}

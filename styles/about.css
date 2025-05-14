@@ -1,0 +1,118 @@
+/*
+    filename: about.css
+    author: Tom
+    created: 09/04/2025
+    description: CSS file for About Form text information
+*/
+
+/* Style for the Student IDs section */
+.student-id {
+    font-size: 24px; /* Sets font size for student IDs */
+    text-align: right; /* Aligns text to the right */
+    padding-right: 60px; /* Adds padding to the right */
+}
+
+.student-list {
+    font-size: 24px; /* Sets font size for the student list */
+    text-align: right; /* Aligns the list to the right */
+}
+
+/* Style for the Members Interests section */
+.memb-interest {
+    font-size: 24px; /* Sets font size for the heading */
+    text-align: center; /* Centers the heading */
+}
+
+/* Style for the Interests Table */
+.interest-table {
+    font-size: 24px; /* Sets font size for the table */
+    text-align: center; /* Centers text in the table */
+    margin: auto; /* Centers the table horizontally */
+    border-collapse: collapse; /* Ensures borders don't double up */
+    width: 80%; /* Makes the table responsive */
+}
+
+.interest-table th {
+    font-weight: bold; /* Makes table headers bold */
+    background-color: #f0f0f0; /* Adds a light gray background to headers */
+}
+
+.interest-table td {
+    background-color: #e6f7ff; /* Adds a light blue background to table cells */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    width: 30%; /* Sets width for table cells */
+}
+
+.interest-table th, .interest-table td {
+    border: 1px solid black; /* Adds a border to table cells */
+    padding: 10px; /* Adds padding inside the cells */
+}
+
+caption {
+    font-size: 24px; /* Sets font size for the table caption */
+    text-align: center; /* Centers the caption */
+}
+
+tr {
+    font-size: 24px; /* Sets font size for table rows */
+    text-align: center; /* Centers text in rows */
+}
+
+th {
+    font-size: 24px; /* Sets font size for table headers */
+    text-align: center; /* Centers text in headers */
+}
+
+/* Style for the Members Interests section container */
+.memb-interest-section {
+    font-size: 24px; /* Sets font size for the section */
+    text-align: center; /* Centers the section content */
+    margin: 20px auto; /* Adds vertical margin and centers the section */
+}
+
+td, th {
+    font-size: 24px; /* Sets font size for table cells and headers */
+    text-align: center; /* Centers text in cells and headers */
+    padding-left: 60px; /* Adds padding to the left */
+}
+
+/* Style for the Members Contribution section */
+.member-cont {
+    font-size: 24px; /* Sets font size for the contribution section */
+    padding-left: 60px; /* Adds padding to the left */
+}
+
+.contribution-list {
+    font-size: 24px; /* Sets font size for the contribution list */
+    padding-left: 60px; /* Adds padding to the left */
+}
+
+/* Style for the Group Photo */
+figure {
+    float: right; /* Floats the figure to the right */
+    margin: 20px; /* Adds spacing around the figure */
+}
+
+figure img {
+    border: 2px solid #000; /* Adds a single border to the image */
+    width: 100%; /* Ensures the image is responsive */
+}
+
+/* Container for Members Contribution and Group Photo */
+.contribution-photo-container {
+    display: flex; /* Aligns the sections side by side */
+    justify-content: space-between; /* Adds space between the sections */
+    align-items: flex-start; /* Aligns items at the top */
+    margin: 20px 0; /* Adds vertical margin */
+}
+
+.memb-cont-section {
+    flex: 1; /* Takes up equal space */
+    margin-right: 20px; /* Adds spacing between sections */
+}
+
+.group-photo-section {
+    flex: 1; /* Takes up equal space */
+    text-align: center; /* Centers the content */
+}
+

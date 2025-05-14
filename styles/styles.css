@@ -1,0 +1,92 @@
+/*
+    filename: style.css
+author: Mack, Eli, Tom, Mahdi
+created: 09/04/2025
+description: Main CSS file for universal text information
+*/
+
+
+/* Out company font family is Lucida Sans for all text  */
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Logo, which appears in the header of every page */
+#Logo {
+    width: 20%;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(168, 226, 180);
+    padding: 10px 20px;
+}
+
+/* Navigation buttons, which appear in the header of every page */
+.NavButton {
+    padding: 10px 20px;
+    background-color: #0099ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.NavButton:hover {
+    background-color: #0073c5;
+}
+
+h1 {
+    font-size: 75px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 20px;
+}
+
+p {
+    font-size: 24px;
+    padding-left: 60px;
+}
+
+li {
+    list-style-position: inside;
+    font-size: 24px;
+    padding-left: 60px;
+}
+
+
+aside {
+    width: 25%;
+    float: right;
+    border: 2px solid rgb(0, 153, 255);
+    margin: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Copyright logo */
+#Copyright {
+    font-size: 19px;
+    text-align: right;
+    display: inline;
+}
+
+footer {
+    text-align: center;
+    clear: right;
+}
+
+footer a {
+    margin: 0 50px;
+    /* add spacing between 'contact us' and 'our jira page'  */
+}
+
+footer p {
+    padding-left: 0;
+    /* override the default <p> padding */
+}
