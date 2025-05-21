@@ -41,7 +41,7 @@ $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo '<aside>';
                 echo '<h2>' . $row['Title'] . '</h2>';
-                echo '<img src="images/SocialMedia.jpg" alt="Social Media Manager Position">';
+                // echo $row['Image'];
                 echo '<p><strong>Description: </strong>' . $row['Description'] . '</p>';
                 echo '<p><strong>Salary Range:</strong> ' . $row['Salary'] . '</p>';
                 echo '<p><strong>Reports To:</strong> ' . $row['Boss'] . '</p>';
