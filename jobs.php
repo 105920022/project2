@@ -1,3 +1,22 @@
+<?php
+$host = 'localhost'; 
+$user = 'root';     
+$password = '';    
+$dbname = 'projectpt2';
+
+// Create a connection
+$conn = new mysqli($host, $user, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Query to fetch job data
+$sql = "SELECT * FROM jobs"; // Replace 'jobs' with your actual table name
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,71 +35,31 @@
         <!-- Title of page section -->
         <h1>Jobs Currently Available:</h1>
         <div class="jobContainer">
-        <!-- Software Developer job section -->
-        <aside>
-            <!-- Stock image -->
-            <img src="images/SoftwareDev.jpg" alt="Software Developer Position">
-            <!-- Job title -->
-            <h2>Software Developer</h2>
-            <!-- Job description -->
-            <p>As a Software Developer, you'll be at the core of transforming how artists produce music — whether they're laying down beats in their bedroom or mixing tracks in a studio.
-            <br><br>
-            We're looking for a passionate and innovative developer who thrives in a collaborative environment and is excited to build software that inspires creativity.</p>
-            <!-- Job reference number -->
-            <p><strong>Reference:</strong> SD001</p>
-            <!-- Job salary -->
-            <p><strong>Salary Range:</strong> $80,000-$110,000</p>
-            <!-- Job boss -->
-            <p><strong>Reports To:</strong> Lead Software Developer</p>
-            <!-- Ordered list of job responsibilities -->
-            <p><strong>Key Responsibilities:</strong></p>
-            <ol>
-                <li>Develop and maintain GrojBand's music production software</li>
-                <li>Collaborate with designers, audio engineers, and QA testers</li>
-                <li>Write clean, efficient, and well-documented code</li>
-            </ol>
-            <!-- Unordered list of job responsibilities -->
-            <p><strong>About you:</strong></p>
-            <ul>
-                <li>Proficiency in C++ and/or C#</li>
-                <li>Strong understanding of audio programming principles</li>
-                <li>Experience working with version control systems</li>
-            </ul>
-        </aside>
-        <!-- Social Media Manager job section -->
-        <aside>
-            <!-- Stock image -->
-            <img src="images/SocialMedia.jpg" alt="Social Media Manager Position">
-            <!-- Job title -->
-            <h2>Social Media Manager</h2>
-            <!-- Job description -->
-            <p>At GrojBand, we believe in the power of community and communication. As a Social Media Manager, you'll be the voice of GrojBand across all digital platforms. 
-            <br><br>
-            You will help grow our brand presence, engage with producers and musicians, and ensure that GrojBand is the go-to music creation software for aspiring and professional producers alike.</p>
-            <!-- Job reference number -->
-            <p><strong>Reference:</strong> SMM02</p>
-            <!-- Job salary -->
-            <p><strong>Salary Range:</strong> $60,000-$85,000</p>
-            <!-- Job boss -->
-            <p><strong>Reports To:</strong> Head of Customer Sales</p>
-            <!-- Ordered list of job responsibilities -->
-            <p><strong>Key Responsibilities:</strong></p>
-            <ol>
-                <li>Develop and execute a content strategy</li>
-                <li>Monitor, respond to, and engage with our online community</li>
-                <li>Analyze and report on social media metrics</li>
-            </ol>
-            <!-- Unordered list of job responsibilities -->
-            <p><strong>About you:</strong></p>
-            <ul>
-                <li>Proven experience in managing social media accounts for a brand</li>
-                <li>Excellent written and verbal communication skills</li>
-                <li>Familiarity with social media analytics tools</li>
-            </ul>
-        </aside>
+        <?php
+        if ($result && $result->num_rows > 0) {
+            // Loop through each job and display it
+            while ($row = $result->fetch_assoc()) {
+                echo '<aside>';
+                echo '<h2>' . htmlspecialchars($row['Title']) . '</h2>';
+                echo '<img src="images/SocialMedia.jpg" alt="Social Media Manager Position">';
+                echo '<p><strong>Description: </strong>' . htmlspecialchars($row['Description']) . '</p>';
+                echo '<p><strong>Salary Range:</strong> ' . htmlspecialchars($row['Salary']) . '</p>';
+                echo '<p><strong>Reports To:</strong> ' . htmlspecialchars($row['Boss']) . '</p>';
+                echo '<p><strong>Responsibilities:</strong> ' . htmlspecialchars($row['Responsibilities']) . '</p>';            
+                echo '<p><strong>Requirements:</strong> ' . htmlspecialchars($row['Requirements']) . '</p>';
+                echo '</aside>';
+            }
+        } else {
+            echo "<p>No job listings found.</p>";
+        }
+        ?>
         </div>
     </section>
     <!-- Bottom footer section, with company title, contact and jira buttons -->
     <?php include('footer.inc') ?>
 </body>
 </html>
+
+<?php
+$conn->close();
+?>
