@@ -17,8 +17,12 @@
     <?php include('header.inc') ?>
     <section>
         <?php
-            // TODO: check if current session is logged in as a manager
             require_once('settings.php');
+            session_start();
+            if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'manager') { // if not logged in or not manager
+                header('Location: login.php');
+                exit();
+            }
             // update row modifications if Save was pressed
             if (isset($_POST['update_row'])) {
                 $eoiNum = $_POST['eoiNum'];
