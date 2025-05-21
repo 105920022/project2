@@ -2,7 +2,7 @@
 $host = 'localhost'; 
 $user = 'root';     
 $password = '';    
-$dbname = 'projectpt2';
+$dbname = 'grojband_db';
 
 // Create a connection
 $conn = new mysqli($host, $user, $password, $dbname);
@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Query to fetch job data
-$sql = "SELECT * FROM jobs"; // Replace 'jobs' with your actual table name
+$sql = "SELECT * FROM jobs";
 $result = $conn->query($sql);
 ?>
 

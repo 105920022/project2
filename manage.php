@@ -1,3 +1,42 @@
+<?php
+    // First, verify that the user is signed in
+    require_once('settings.php');
+    session_start();
+
+    $canLogin = false;
+    if (!isset($_SESSION['username'])) // If we're not already logged in
+    {
+        if (isset($_POST['username'])) // If we just tried to login
+        {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            $sql = "SELECT * FROM managers WHERE username = '$username'";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result)
+            {
+                $user = mysqli_fetch_assoc($result);
+
+                if ($user['password'] == $password) // If the creds were all good
+                {
+                    $_SESSION['username'] = $username;
+                    $canLogin = true;
+                }
+            }
+        }
+    }
+    else // If we were already logged in
+    {
+        $canLogin = true; 
+    }
+
+    if (!$canLogin)
+    {   
+        header('Location: login.php?incorrect=1');
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +56,14 @@
     <?php include('header.inc') ?>
     <section>
         <?php
-            require_once('settings.php');
-            session_start();
-            if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'manager') { // if not logged in or not manager
+            // did the user sign out?
+            if (isset($_POST['logout']))
+            {
+                session_unset();
                 header('Location: login.php');
                 exit();
             }
+
             // update row modifications if Save was pressed
             if (isset($_POST['update_row'])) {
                 $eoiNum = $_POST['eoiNum'];
@@ -180,6 +221,9 @@
         <input type="submit" name="change_status" value="Update Status">
         <br>
         <input type="submit" name="list_all" value="List All EOIs">
+        <br>
+        <br>
+        <input type="submit" name="logout" value="Logout">
     </form>
     <?php include('footer.inc') ?>
 </body>
