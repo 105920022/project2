@@ -40,13 +40,13 @@ $result = $conn->query($sql);
             // Loop through each job and display it
             while ($row = $result->fetch_assoc()) {
                 echo '<aside>';
-                echo '<h2>' . htmlspecialchars($row['Title']) . '</h2>';
+                echo '<h2>' . $row['Title'] . '</h2>';
                 echo '<img src="images/SocialMedia.jpg" alt="Social Media Manager Position">';
-                echo '<p><strong>Description: </strong>' . htmlspecialchars($row['Description']) . '</p>';
-                echo '<p><strong>Salary Range:</strong> ' . htmlspecialchars($row['Salary']) . '</p>';
-                echo '<p><strong>Reports To:</strong> ' . htmlspecialchars($row['Boss']) . '</p>';
-                echo '<p><strong>Responsibilities:</strong> ' . htmlspecialchars($row['Responsibilities']) . '</p>';            
-                echo '<p><strong>Requirements:</strong> ' . htmlspecialchars($row['Requirements']) . '</p>';
+                echo '<p><strong>Description: </strong>' . $row['Description'] . '</p>';
+                echo '<p><strong>Salary Range:</strong> ' . $row['Salary'] . '</p>';
+                echo '<p><strong>Reports To:</strong> ' . $row['Boss'] . '</p>';
+                echo '<p><strong>Responsibilities:</strong> ' . $row['Responsibilities'] . '</p>';            
+                echo '<p><strong>Requirements:</strong> ' . $row['Requirements'] . '</p>';
                 echo '</aside>';
             }
         } else {
