@@ -121,7 +121,6 @@
                 $refNum = $_POST['refNum'];
                 $query = "SELECT * FROM eoi WHERE refNum = '$refNum'";
             }
-
             elseif (isset($_POST['filter_name'])) {
                 $first = $_POST['firstName'];
                 $last = $_POST['lastName'];
@@ -132,6 +131,20 @@
                     $query = "SELECT * FROM eoi WHERE firstName = '$first'";
                 } elseif (!empty($last)) {
                     $query = "SELECT * FROM eoi WHERE lastName = '$last'";
+                }
+            }
+            elseif (isset($_POST['sort']) && !empty($_POST['sortedColumn']))
+            {
+                $selectedSort = $_POST['sortedColumn'];
+                if($selectedSort == 'skills')
+                {
+                    $query = "SELECT *, 
+                        (skillsCPP + skillsHTML + skillsCSS + skillsJS + skillsMySQL + skillsPS + skillsGA) AS skillCount 
+                        FROM eoi ORDER BY skillCount DESC"; // Orders by most to least skills
+                }
+                else
+                {
+                    $query = "SELECT * FROM eoi ORDER BY $selectedSort ASC";
                 }
             }
             elseif (isset($_POST['delete_by_ref']) && !empty($_POST['deleteRef'])) {
@@ -198,14 +211,33 @@
         ?>
     </section>
     <form method="POST" action="manage.php">
-        <label>By Job Ref: </label>
+        <label>Filter by Job Ref: </label>
         <input type="text" name="refNum" placeholder="e.g sd001">
         <input type="submit" name="filter_ref" value="Filter">
         <br>
-        <label>By Name:</label>
+        <label>Filter by Name:</label>
         <input type="text" name="firstName" placeholder="First Name">
         <input type="text" name="lastName" placeholder="Last Name">
         <input type="submit" name="filter_name" value="Search">
+        <br>
+        <label>Sort by: </label>
+        <select id="sortedColumn" name="sortedColumn">
+            <option value="eoiNum">EOI Num</option>
+            <option value="status">Status</option>
+            <option value="refNum">Job Ref</option>
+            <option value="firstName">First Name</option>
+            <option value="lastName">Last Name</option>
+            <option value="gender">Gender</option>
+            <option value="address">Address</option>
+            <option value="suburb">Suburb</option>
+            <option value="state">State</option>
+            <option value="zip">ZIP</option>
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+            <option value="skills">Skills</option>
+            <option value="skillsOther">Skills Other</option>
+        </select>
+        <input type="submit" name="sort" value="Sort">
         <br>
         <label>Delete by Job Ref: </label>
         <input type="text" name="deleteRef" placeholder="e.g sd001">
