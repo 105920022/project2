@@ -57,7 +57,12 @@ $skillsGA    = in_array('ga', $skills) ? 1 : 0;
 
 $otherSkills = trim($_POST['otherSkills']);
 
-// server-side validation //
+// SERVER-SIDE VALIDATION //
+if(!isset($_POST['refNum'])) {
+    header("Location: apply.php");
+    exit();
+} // checks if refnum has been entered, if not, redirects to apply.php as that means they have not completed the form
+
 if (!preg_match('/^[a-zA-Z]{1,20}$/', $firstName) || !preg_match('/^[a-zA-Z]{1,20}$/', $lastName)) {
     die("Both first and last names should be less than 20 characters long, and should only contain letters."); 
 } // checks length and type of firstname/lastname
