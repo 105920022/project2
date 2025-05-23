@@ -103,12 +103,14 @@ $result = mysqli_query($conn, $query);
 <h2>
     <?php // seperated to allow easier styling
     if ($result) {
-    echo "application successful!";
+    $eoiNum = mysqli_insert_id($conn);
+    echo "application successful! </h2>";
+    echo("your application number is <strong>$eoiNum</strong>");
 } else {
-    echo "an error has occurred.";
+    echo "an error has occurred.</h2>";
 }
 ?>
-</h2>
+<br>
 <a href="index.php">Return to Home</a>
 
 
