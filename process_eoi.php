@@ -63,6 +63,22 @@ if(!isset($_POST['refNum'])) {
     exit();
 } // checks if refnum has been entered, if not, redirects to apply.php as that means they have not completed the form
 
+function sanitize_input($data) {
+    $data = trim($data); 
+    $data = stripslashes($data); 
+    $data = htmlspecialchars($data); 
+    return $data;
+} // function to sanitize inputs to remove trailing/leading spaces, backslashes and special characters
+
+// sanitising inputs //
+$firstName = sanitize_input($_POST['firstName']);
+$lastName = sanitize_input($_POST['lastName']);
+$email = sanitize_input($_POST['email']);
+$address = sanitize_input($_POST['address']);
+$suburb = sanitize_input($_POST['suburb']);
+$otherSkills = sanitize_input($_POST['otherSkills']);
+
+
 if (!preg_match('/^[a-zA-Z]{1,20}$/', $firstName) || !preg_match('/^[a-zA-Z]{1,20}$/', $lastName)) {
     die("Both first and last names should be less than 20 characters long, and should only contain letters."); 
 } // checks length and type of firstname/lastname
