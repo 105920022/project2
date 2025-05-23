@@ -1,10 +1,25 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="results for the application to Grojband.">
+    <meta name="keywords" content="group, project, apply, eoi, results">
+    <meta name="author" content="Grojband">
+    <title>Grojband applicant results</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<?php include('header.inc'); // includes header for page ?>
+<?php // PHP LOGIC START
 require_once('settings.php');
 session_start();
 $conn = mysqli_connect($host, $username, $password, $database);
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
+
+// lines below echo the results that were put into the table
+// echo '<pre>';
+// print_r($_POST);  
+// echo '</pre>';
 
 // DEFINING FIELDS //
 $refNum = trim($_POST['refNum']);
@@ -47,7 +62,7 @@ if (!preg_match('/^[a-zA-Z]{1,20}$/', $firstName) || !preg_match('/^[a-zA-Z]{1,2
     die("Both first and last names should be less than 20 characters long, and should only contain letters."); 
 } // checks length and type of firstname/lastname
 
-if (!preg_match('/^[a-zA-Z\s\-]{1,40}$/', $address) || !preg_match('/^[a-zA-Z\s\-]{1,20}$/', $suburb)) {
+if (!preg_match('/^[a-zA-Z0-9\s\/\-]{1,40}$/', $address) || !preg_match('/^[a-zA-Z\s\-]{1,20}$/', $suburb)) {
     die("Street Address and Suburb/towns may only be at maximum 40 characters long.");
 } // checks the length of the address and suburb. Allows spaces and hyphens
 
@@ -66,6 +81,8 @@ $stateZips = [ // regex rules for each state's postcodes
     'NT'  => '/^0\d{3}$/'
 ];
 
+$state = strtoupper($state); // converts states into uppercase
+
 if (!preg_match($stateZips[$state], $zip)) {
     die("Your postcode must match your state.");
 } // uses the regex rules to validate postcode based on the state chosen by the applicant
@@ -81,9 +98,20 @@ if (!preg_match('/^\d{8,12}$/', $phone)) {
 
 $query = "INSERT INTO eoi (refNum, firstName, lastName, dob, gender, address, suburb, state, zip, email, phone, skillsCPP, skillsHTML, skillsCSS, skillsJS, skillsMySQL, skillsPS, skillsGA, skillsOther) VALUES ('$refNum', '$firstName', '$lastName', '$dob', '$gender', '$address', '$suburb', '$state', '$zip', '$email', '$phone', '$skillsCPP', '$skillsHTML', '$skillsCSS', '$skillsJS', '$skillsMySQL', '$skillsPS', '$skillsGA', '$otherSkills')";
 $result = mysqli_query($conn, $query);
+?>
 
-if ($result) {
+<h2>
+    <?php // seperated to allow easier styling
+    if ($result) {
     echo "application successful!";
 } else {
     echo "an error has occurred.";
 }
+?>
+</h2>
+<a href="index.php">Return to Home</a>
+
+
+<?php include('footer.inc'); // includes footer for page ?>
+</body>
+</html>
