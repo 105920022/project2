@@ -85,7 +85,12 @@
                 header('Location: login.php');
                 exit();
             }
-
+            // did the user want to add a manager?
+            if (isset($_POST['add_manager']))
+            {
+                header('Location: addManager.php');
+                exit();
+            }
             // update row modifications if Save was pressed
             if (isset($_POST['update_row'])) {
                 $eoiNum = $_POST['eoiNum'];
@@ -275,6 +280,8 @@
         <input type="submit" name="change_status" value="Update Status">
         <br>
         <input type="submit" name="list_all" value="List All EOIs">
+        <br>
+        <input type="submit" name="add_manager" value="Add Manager User">
         <br>
         <br>
         <input type="submit" name="logout" value="Logout">
