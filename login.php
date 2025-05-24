@@ -1,8 +1,7 @@
 <?php
     // If already logged in, and return to the login menu, log out
     session_start();
-    session_unset();
-    session_destroy();
+    unset($_SESSION['username']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +17,21 @@
 <body> 
     <?php include('header.inc') ?>
     <h1 id="jobApplicationTitle">Login</h1>
+    <?php
+        if (isset($_SESSION['lastLogin']) && time() - $_SESSION['lastLogin'] >= 10) // If we're currently locked out, but been logged out for 10 seconds
+        { // (NOTE: 10 seconds would be too short for a real world application, but it's good for testing purposes)
+            unset($_SESSION['lastLogin']);
+            unset($_SESSION['loginAttempts']); // Let them try again
+        }
+        if (isset($_SESSION['loginAttempts']) && $_SESSION['loginAttempts'] >= 3) // If the user has logged in too many times, don't let them again
+        {
+    ?>
+    <p style="color: red; text-align: center;">Too many login attempts. Please try again later.</p>
+    <?php
+        }
+        else // Otherwise, show the log in screen
+        {
+    ?>
     <form method="post" action="manage.php">
         <p>
             <label for="username">Username: </label> 
@@ -37,6 +51,9 @@
             <button type="submit">Login</button>
         </p>
     </form>
-    <?php include('footer.inc') ?>
+    <?php 
+        }
+        include('footer.inc');
+    ?>
 </body>
 </html>

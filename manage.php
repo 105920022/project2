@@ -4,7 +4,11 @@
     session_start();
 
     $canLogin = false;
-    if (!isset($_SESSION['username'])) // If we're not already logged in
+    if(isset($_SESSION['loginAttempts']) && $_SESSION['loginAttempts'] >= 3) // If we've had too many login attempts (and bypassed the login page)
+    {
+        $canLogin = false;
+    }
+    elseif (!isset($_SESSION['username'])) // If we're not already logged in
     {
         if (isset($_POST['username'])) // If we just tried to login
         {
@@ -32,9 +36,27 @@
     }
 
     if (!$canLogin)
-    {   
+    {
+        if(!isset($_SESSION['loginAttempts']))
+        {
+            $_SESSION['loginAttempts'] = 1;
+        }
+        else
+        {
+            $_SESSION['loginAttempts']++;
+            if($_SESSION['loginAttempts'] == 3) // If we need to stop them from logging in now
+            {
+                $_SESSION['lastLogin'] = time(); // Save the current time
+            }
+        }
+
         header('Location: login.php?incorrect=1');
         exit();
+    }
+    else
+    {
+        unset($_SESSION['loginAttempts']);
+        unset($_SESSION['lastLogin']);
     }
 ?>
 <!DOCTYPE html>
