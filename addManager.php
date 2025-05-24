@@ -17,11 +17,11 @@
 
         if (empty($userUsername) || empty($userPassword)) // Validation
         {
-            $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: Username and password are required.</p>";
+            $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: Username and password are required.";
         }
         elseif (strlen($userPassword) < 6) // Password rule
         {
-            $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: Password must be at least 6 characters long.</p>";
+            $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: Password must be at least 6 characters long.";
         }
         else
         {
