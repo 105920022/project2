@@ -36,6 +36,7 @@ $result = $conn->query($sql);
         <h1>Jobs Currently Available:</h1>
         <div class="jobContainer">
         <?php
+        // had to use an array to hardcode the images, because I couldn't figure out how to get the images from the database
         $images = [
             "images/SoftwareDev.jpg",
             "images/SocialMedia.jpg",
