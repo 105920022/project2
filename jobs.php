@@ -2,7 +2,7 @@
 $host = 'localhost'; 
 $user = 'root';     
 $password = '';    
-$dbname = 'grojband_db';
+$dbname = 'grojband_db'; //change this 
 
 // Create a connection
 $conn = new mysqli($host, $user, $password, $dbname);
@@ -36,18 +36,24 @@ $result = $conn->query($sql);
         <h1>Jobs Currently Available:</h1>
         <div class="jobContainer">
         <?php
+        $images = [
+            "images/SoftwareDev.jpg",
+            "images/SocialMedia.jpg",
+        ];
+        $i = 0;
         if ($result && $result->num_rows > 0) {
             // Loop through each job and display it
             while ($row = $result->fetch_assoc()) {
+                $img = $images[$i % count($images)];
                 echo '<aside>';
                 echo '<h2>' . $row['Title'] . '</h2>';
-                // echo $row['Image'];
-                echo '<p><strong>Description: </strong>' . $row['Description'] . '</p>';
+                echo '<img src="' . $img . '" alt="Job image" style="">';
                 echo '<p><strong>Salary Range:</strong> ' . $row['Salary'] . '</p>';
                 echo '<p><strong>Reports To:</strong> ' . $row['Boss'] . '</p>';
                 echo '<p><strong>Responsibilities:</strong> ' . $row['Responsibilities'] . '</p>';            
                 echo '<p><strong>Requirements:</strong> ' . $row['Requirements'] . '</p>';
                 echo '</aside>';
+                $i++;
             }
         } else {
             echo "<p>No job listings found.</p>";
