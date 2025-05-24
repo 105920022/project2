@@ -46,14 +46,13 @@ $email = trim($_POST['email']);
 $phone = trim($_POST['phone']);
 
 
-$skills = isset($_POST['requiredTechnical']) ? $_POST['requiredTechnical'] : [];
-$skillsCPP   = in_array('cpp', $skills) ? 1 : 0;
-$skillsHTML  = in_array('html', $skills) ? 1 : 0;
-$skillsCSS   = in_array('css', $skills) ? 1 : 0;
-$skillsJS    = in_array('js', $skills) ? 1 : 0;
-$skillsMySQL = in_array('mysql', $skills) ? 1 : 0;
-$skillsPS    = in_array('ps', $skills) ? 1 : 0;
-$skillsGA    = in_array('ga', $skills) ? 1 : 0;
+$skillsCPP   = isset($_POST['skillsCPP']) ? 1 : 0;
+$skillsHTML  = isset($_POST['skillsHTML']) ? 1 : 0;
+$skillsCSS   = isset($_POST['skillsCSS']) ? 1 : 0;
+$skillsJS    = isset($_POST['skillsJS']) ? 1 : 0;
+$skillsMySQL = isset($_POST['skillsMySQL']) ? 1 : 0;
+$skillsPS    = isset($_POST['skillsPS']) ? 1 : 0;
+$skillsGA    = isset($_POST['skillsGA']) ? 1 : 0;
 
 $otherSkills = trim($_POST['otherSkills']);
 
