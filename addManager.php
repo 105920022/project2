@@ -19,6 +19,10 @@
         {
             $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: Username and password are required.</p>";
         }
+        elseif (strlen($userPassword) < 6) // Password rule
+        {
+            $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: Password must be at least 6 characters long.</p>";
+        }
         else
         {
             $sql = "INSERT INTO managers(`username`, `password`) VALUES ('$userUsername', '$userPassword')";
