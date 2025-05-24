@@ -98,6 +98,7 @@
                 $refNum = $_POST['refNum'];
                 $firstName = $_POST['firstName'];
                 $lastName = $_POST['lastName'];
+                $dob = $_POST['dob'];
                 $gender = $_POST['gender'];
                 $address = $_POST['address'];
                 $suburb = $_POST['suburb'];
@@ -122,6 +123,7 @@
                         refNum = '$refNum',
                         firstName = '$firstName',
                         lastName = '$lastName',
+                        dob = '$dob',
                         gender = '$gender',
                         address = '$address',
                         suburb = '$suburb',
@@ -195,7 +197,7 @@
             if(mysqli_num_rows($result) > 0){
                 echo '<table border="1" cellpadding="10" cellspacing="0">';
                 echo '<tr>
-                <th>EOI Num</th><th>Status</th><th>Job Ref</th><th>First Name</th><th>Last Name</th>
+                <th>EOI Num</th><th>Status</th><th>Job Ref</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th>
                 <th>Gender</th><th>Address</th><th>Suburb</th><th>State</th><th>ZIP</th><th>Email</th>
                 <th>Phone</th><th>Skills</th><th>SkillsOther</th><th>Action</th>
                 </tr>';
@@ -218,6 +220,7 @@
                     echo '<td><input type="text" name="refNum" value="' . $row['refNum'] . '" style="width:50px;"></td>';
                     echo '<td><input type="text" name="firstName" value="' . $row['firstName'] . '"style="width:100px;"></td>';
                     echo '<td><input type="text" name="lastName" value="' . $row['lastName'] . '" style="width:100px;"></td>';
+                    echo '<td><input type="text" name="dob" value="' . $row['dob'] . '" style="width:100px;"></td>';
                     echo '<td><input type="text" name="gender" value="' . $row['gender'] . '" style="width:50px;"></td>';
                     echo '<td><input type="text" name="address" value="' . $row['address'] . '"></td>';
                     echo '<td><input type="text" name="suburb" value="' . $row['suburb'] . '"></td>';
@@ -254,6 +257,7 @@
             <option value="refNum">Job Ref</option>
             <option value="firstName">First Name</option>
             <option value="lastName">Last Name</option>
+            <option value="dob">Date of Birth</option>
             <option value="gender">Gender</option>
             <option value="address">Address</option>
             <option value="suburb">Suburb</option>
