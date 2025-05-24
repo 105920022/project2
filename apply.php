@@ -12,7 +12,7 @@
 <body> 
     <?php include('header.inc') ?>
     <h1 id="jobApplicationTitle">Position Application</h1>
-    <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
+    <form method="post" action="process_eoi.php">
         <p>
             <label for="refNum">Job Reference Number: </label> 
             <select name="refNum" id="refNum" required>
@@ -38,7 +38,7 @@
         <fieldset id="genderFieldset">
             <legend>Gender</legend>
 
-            <input type="radio" id="boy" name="gender" class="gender" value="boy" required checked>
+            <input type="radio" id="boy" name="gender" class="gender" value="boy" required>
             <label for="boy" class="gender">Boy</label> 
 
             <input type="radio" id="girl" name="gender" class="gender" value="girl">
@@ -93,13 +93,13 @@
         <!-- I assume "required technical" meant skills that are required? For all open jobs? And the user unselects the ones they dont have? -->
         <p>
             <label>Required Technical Skills: </label>
-            <label><input type="checkbox" class="requiredTechnical" name="requiredTechnical[]" value="cpp" checked> C++</label>
-            <label><input type="checkbox" class="requiredTechnical" name="requiredTechnical[]" value="html" checked> HTML</label>
-            <label><input type="checkbox" class="requiredTechnical" name="requiredTechnical[]" value="css" checked> CSS</label>
-            <label><input type="checkbox" class="requiredTechnical" name="requiredTechnical[]" value="js" checked> JavaScript</label>
-            <label><input type="checkbox" class="requiredTechnical" name="requiredTechnical[]" value="mysql" checked> MySQL</label>
-            <label><input type="checkbox" class="requiredTechnical" name="requiredTechnical[]" value="ps" checked> Photoshop</label>
-            <label><input type="checkbox" class="requiredTechnical" name="requiredTechnical[]" value="ga" checked> Google Analytics</label>
+            <label><input type="checkbox" class="requiredTechnical" name="skillsCPP" value="1" checked> C++</label>
+            <label><input type="checkbox" class="requiredTechnical" name="skillsHTML" value="1" checked> HTML</label>
+            <label><input type="checkbox" class="requiredTechnical" name="skillsCSS" value="1" checked> CSS</label>
+            <label><input type="checkbox" class="requiredTechnical" name="skillsJS" value="1" checked> JavaScript</label>
+            <label><input type="checkbox" class="requiredTechnical" name="skillsMySQL" value="1" checked> MySQL</label>
+            <label><input type="checkbox" class="requiredTechnical" name="skillsPS" value="1" checked> Photoshop</label>
+            <label><input type="checkbox" class="requiredTechnical" name="skillsGA" value="1" checked> Google Analytics</label>
         </p>
         <p>
             <label for="otherSkills">Other Skills:</label>
