@@ -4,6 +4,7 @@
     <nav>
         <a class="NavButton" href="index.php">Home</a>
         <a class="NavButton" href="about.php">About</a>
+        <a class="NavButton" href="enhancements.php">Enhancements</a>
         <a class="NavButton" href="login.php">Login</a>
         <a class="NavButton" href="jobs.php">Jobs</a>
         <a class="NavButton" href="apply.php">Apply</a>
