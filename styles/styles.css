@@ -13,7 +13,8 @@ description: Main CSS file for universal text information
 
 /* Logo, which appears in the header of every page */
 #Logo {
-    width: 20%;
+    width: 30%;
+    height: auto;
 }
 
 header {
@@ -22,6 +23,13 @@ header {
     justify-content: space-between;
     background-color: rgb(168, 226, 180);
     padding: 10px 20px;
+    flex-wrap: nowrap;
+}
+
+
+nav {
+    display: flex;
+    gap: 10px;
 }
 
 /* Navigation buttons, which appear in the header of every page */

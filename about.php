@@ -62,13 +62,18 @@
             <h2 class="memb-cont">Members Contribution</h2>
             <dl class="contribution-list">
                 <dt>Eli</dt>
-                <dd>Jobs Page</dd>
+                    <dd>Jobs Page</dd>
+                    <dd>Initial Setup of PHP and SQL</dd>
+                    <dd>All Enhancements</dd>
                 <dt>Mack</dt>
-                <dd>Apply Page</dd>
+                    <dd>Apply Page</dd>
+                    <dd>Manage Page and Modify/List Controls</dd>
                 <dt>Tom</dt>
-                <dd>About Page</dd>
+                    <dd>About Page</dd>
+                    <dd>Converted Jobs Page to Dynamically Display Information</dd>
                 <dt>Mahdi</dt>
-                <dd>Index Page</dd>
+                    <dd>Index Page</dd>
+                    <dd>Set Up EOI Data and Linked with Apply Form</dd>
             </dl>
         </div>
 
