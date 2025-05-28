@@ -25,22 +25,24 @@
         }
         else
         {
-            $sql = "INSERT INTO managers(`username`, `password`) VALUES ('$userUsername', '$userPassword')";
-            $result = mysqli_query($conn, $sql);
-            if ($result)
+            try 
             {
+                $sql = "INSERT INTO managers(`username`, `password`) VALUES ('$userUsername', '$userPassword')";
+                $result = mysqli_query($conn, $sql);
                 $_SESSION['submitMessage'] = "<p style='color: green;'>Successfully added new user!";
-            }
-            else if (mysqli_errno($conn) == 1062) // If the duplicate primary key error was thrown
-            {
-                $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: Username already exists.";
-            }
-            else
-            {
-                $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: " . mysqli_error($conn);
+            } 
+            catch (mysqli_sql_exception $e) {
+                if ($e->getCode() == 1062)
+                { // Duplicate entry
+                    $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: Username already exists.";
+                }
+                else
+                {
+                    $_SESSION['submitMessage'] = "<p style='color: red;'>Couldn't add new user: " . $e->getMessage();
+                }
             }
         }
-
+        
         header("Location: " . $_SERVER['PHP_SELF']); // Refresh and clear post to prevent resubmition on refresh
         exit();
     }
